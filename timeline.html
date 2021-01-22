@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>timeline design using css 3</title>
+    
+     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700i" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/css/swiper.min.css">
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+   ></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+ 
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  flex-direction: column;
+}
+ 
+ 
+        
+.timeline {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 5px 25px 5px rgba(0, 0, 0, .2);
+}
+.timeline .swiper-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+.timeline .swiper-wrapper {
+  transition: 2s cubic-bezier(0.68, -0.4, 0.27, 1.34) 0.2s;
+}
+.timeline .swiper-slide {
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+    
+}
+.timeline .swiper-slide::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: -115%;
+  bottom: -10%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  box-shadow: -230px 0 150px 60vw rgba(0, 0, 0, .7);
+  border-radius: 100%;
+}
+.timeline .swiper-slide-content {
+  position: absolute;
+  text-align: center;
+  width: 80%;
+  max-width: 150vh;
+  right: 50%;
+  top: 13%;
+  transform: translate(50%, 0);
+  font-size: 15px;
+  z-index: 2;
+}
+.timeline .swiper-slide .timeline-year {
+  display: block;  
+  font-size: 22px !important;
+  margin-bottom: 50px;
+  transform: translate3d(20px, 0, 0);
+  color: orange;
+    font-style: italic;
+  font-weight: 300;
+  opacity: 0;
+  transition: 0.2s ease 0.4s;
+}
+.timeline .swiper-slide .timeline-title {
+  font-weight: 800;
+  font-size: 54px !important;
+  margin: 0 0 30px;
+  opacity: 0;
+  transform: translate3d(20px, 0, 0);
+  transition: 0.2s ease 0.5s;
+}
+.timeline .swiper-slide .timeline-text {
+  line-height: 1.8;
+  opacity: 0;
+  transform: translate3d(20px, 0, 0);
+  transition: 0.2s ease 0.6s;
+    font-size: 14px;
+}
+.timeline .swiper-slide-active .timeline-year {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: 0.4s ease 1.6s;
+     
+}
+.timeline .swiper-slide-active .timeline-title {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: 0.4s ease 1.7s;
+}
+.timeline .swiper-slide-active .timeline-text {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: 0.4s ease 1.8s;
+}
+.timeline .swiper-pagination {
+  right: 15% !important;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 18px;
+  z-index: 1;
+}
+.timeline .swiper-pagination::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: rgba(255, 255, 255, .2);
+}
+.timeline .swiper-pagination-bullet {
+  width: auto;
+  height: auto;
+  text-align: center;
+  opacity: 1;
+  background: transparent;
+  color: #d4a024;
+  margin: 15px 0 !important;
+  position: relative;
+}
+.timeline .swiper-pagination-bullet::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: -32.5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background-color: #d4a024;
+  transform: scale(0);
+  transition: 0.2s;
+}
+.timeline .swiper-pagination-bullet-active {
+  color: #d4a024;
+}
+.timeline .swiper-pagination-bullet-active::before {
+  transform: scale(1);
+}
+.timeline .swiper-button-next, .timeline .swiper-button-prev {
+  background-size: 20px 20px;
+  top: 15%;
+  width: 20px;
+  height: 20px;
+  margin-top: 0;
+  z-index: 2;
+  transition: 0.2s;
+}
+.timeline .swiper-button-prev {
+  left: 8%;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23d4a024'%2F%3E%3C%2Fsvg%3E");
+}
+.timeline .swiper-button-prev:hover {
+  transform: translateX(-3px);
+}
+.timeline .swiper-button-next {
+  right: 8%;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23d4a024'%2F%3E%3C%2Fsvg%3E");
+}
+.timeline .swiper-button-next:hover {
+  transform: translateX(3px);
+}
+@media screen and (min-width: 768px) {
+  .timeline .swiper-slide::after {
+    right: -30%;
+    bottom: -8%;
+    width: 240px;
+    height: 50%;
+    box-shadow: -230px 0 150px 50vw rgba(0, 0, 0, .7);
+  }
+  .timeline .swiper-slide-content {
+    right: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2000vh;
+    font-size: 11px;
+    text-align: left;
+  }
+  .timeline .swiper-slide .timeline-year {
+    margin-bottom: 0;
+    font-size: 32px;
+  }
+  .timeline .swiper-slide .timeline-title {
+    font-size: 46px;
+    margin: 0;
+  }
+  .timeline .swiper-pagination {
+    display: flex;
+  }
+  .timeline .swiper-button-prev {
+    top: 15%;
+    left: auto;
+    right: 15%;
+    transform: rotate(90deg) translate(0, 10px);
+  }
+  .timeline .swiper-button-prev:hover {
+    transform: rotate(90deg) translate(-3px, 10px);
+  }
+  .timeline .swiper-button-next {
+    top: auto;
+    bottom: 15%;
+    right: 15%;
+    transform: rotate(90deg) translate(0, 10px);
+  }
+  .timeline .swiper-button-next:hover {
+    transform: rotate(90deg) translate(3px, 10px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  .timeline .swiper-slide::after {
+    right: -20%;
+    bottom: -12%;
+    width: 240px;
+    height: 50%;
+    box-shadow: -230px 0 150px 39vw rgba(0, 0, 0, .7);
+  }
+  .timeline .swiper-slide-content {
+    right: 25%;
+  }
+}
+
+    
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+ 
+  <div class="timeline">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" style="background-image: url(bastile2.jpg)" data-year="July 14, 1789">
+          <div class="swiper-slide-content"><span class="timeline-year">July 14, 1789</span>
+            <h4 class="timeline-title">The Storming of Bastille  </h4>
+            <p class="timeline-text"><span style="background-color: #0f0f01">The image above is a painting showing the storming of Bastille by the third estate. The storming of Bastille was a message sent by the people, this event sparked the beginning of the French Revolution. In this painting, the tower in the background is going up in smoke as the people below are firing weapons, inside what seems to be a broken down building. Another detail can be found when looking at the buildings, the artist paints the building with aging colors, demonstrating his belief that the monarch government is old and dying. The storming of Bastille delivered the message that the third estate was finally retaliating after years of inequality and oppression by the King. They had more than enough power to take over the prison and tear it down with their bare hands. The successful raid of Bastille strengthened the wills of the citizens to allow them to strive forward to commit more acts of revolt. A sense of nationalism can be found within this painting because it shows the unity between the third estate citizens, after their enlightenment they became united against the upper classes and decided to come together to act upon these ideas and start a revolt against the King. The storming of Bastille relates to social studies because this is the start of one of the most important events that shaped the world shortly after: the French Revolution. The storming of Bastille brought fear and hysteria throughout France as more and more third estate citizens stormed and rioted around the country. A month later, the signing of The Declaration of the Rights of Man and of the Citizen finally abolished the feudal society plaguing the citizens for generations. The Storming of Bastille was a crucial event and is a building block towards the dismantlement of feudalism as the First Republic emerged from the ashes of the ancien regime.</span></p>
+          </div>
+        </div>
+        <div class="swiper-slide" style="background-image: url(concr.jpg)" data-year="Nov. 9, 1799">
+          <div class="swiper-slide-content"><span class="timeline-year">Nov. 9, 1799</span>
+            <h3 class="timeline-title">Napolean </h3>
+            <p class="timeline-text"><span style="background-color: #0f0f01">The image above depicts the Concordat of 1801 between Napoleon and Pope Pius VII, representing the Catholic Church of France. During the French Revolution, the National Assembly took away the clergy’s power and made the Civil Constitution of the Clergy in 1790, removing it from it's total power it once had. The aim of their decisions was to weaken the position of the Catholic Church in France and caused unrest between the Church and the French. Although he wasn’t religious himself, Napoleon saw this situation as an opportunity to further grow his regime. He attempted to close the gap between France and the Church by making the Roman Catholic Church as the majority church of France. People can only become Bishops after consulting the Pope, instead of the government fully having authority over the appointed priests and bishops. The church was being funded by him, however they didn’t get back the land that was seized during the French revolution and by signing this, the Vatican agreed to give up their former land. The angel seen above demonstrates that the author of this drawing believed that the Concordat of 1801 favored the Church and that the Church approved of Napoleon and supported him after this. Napoleon got rid of most of the hostility of Catholics against the state. Catholic clergy who escaped during the French Revolution returned from exile or hiding and resumed their work in churches. While the Concordat restored some power back to the Church, Napoleon benefited greatly from this as well, gaining the support of many French Catholics, increasing the power of his regime. Napoleon still followed the ideals of the French revolution and gave the people religious freedom while allowing the Catholic church to regain some of their lost power. Nonetheless, Napoleon reached an agreement that benefitted both parties and gained more support than ever after this.</span></p>
+          </div>
+        </div>
+        <div class="swiper-slide" style="background-image: url(fhjnbv.jpg)" data-year="September 1, 1715
+        ">
+          <div class="swiper-slide-content"><span class="timeline-year">September 1, 1715
+          </span>
+            <h4 class="timeline-title">King Louis Execution</h4>
+            <p class="timeline-text"><span style="background-color: #0f0f01">Louis XVI and Marie Antoinette were executed for treason. Louis had failed to address France's money related issues, putting in motion the French Revolution that in the long run descended upon him. He made things even worse by regularly getting away to more pleasurable exercises like hunting and locksmithing. Within the last two years of Louis’ reign, events moved rapidly. Within the fall of 1791, Louis XVI tied his trusts on the questionable prospect of war with Austria in trusts that a military overcome would clear the way for reclamation of his authority. War broke out in April 1792. Doubts of treason led to the capture of the royal family and the suspension of the king’s powers. On Proof of Louis XVI's secret dealings and counter-revolutionary interests was found, and he and his family were charged with treason. Louis was soon found guilty by the National Get together and condemned to passing. Louis XVI was guillotined in the Place de la Révolution on January 21, 1793. His wife, Marie Antoinette, met the same fate nine months later, on October 16, 1793. This was an important day for the french nation since this kind was the reason fro their down fall and his death led to the motivation of many to rebuild their nation. Louis XVI was guillotined in the Put de la Révolution on January 21, 1793. His spouse, Marie Antoinette, met the same destiny nine months afterward, on October 16, 1793. This was an critical day for the french nation since this king was the reason for their down drop and his death led to the inspiration of numerous to rebuild their country. The king had taken everything from the 3rd Estate and the death of the final king meant the end of the hierarchy which is what all in the 3rd estate had hoped for.</span></p>
+          </div>
+        </div>
+        
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.2/js/swiper.min.js"></script>
+<script>
+    $(function(){
+   
+var timelineSwiper = new Swiper ('.timeline .swiper-container', {
+  direction: 'vertical',
+  loop: false,
+  speed: 1600,
+  pagination: '.swiper-pagination',
+  paginationBulletRender: function (swiper, index, className) {
+    var year = document.querySelectorAll('.swiper-slide')[index].getAttribute('data-year');
+    return '<span class="' + className + '">' + year + '</span>';
+  },
+  paginationClickable: true,
+  nextButton: '.swiper-button-next',
+  prevButton: '.swiper-button-prev',
+  breakpoints: {
+    768: {
+      direction: 'horizontal',
+    }
+  }
+});    
+    
+             
+    });
+</script>
+</body>
+</html>
